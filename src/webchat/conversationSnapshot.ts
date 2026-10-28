@@ -21,12 +21,12 @@ export function canonicalSnapshotUrl(value: string): string {
 }
 
 const allowedTags = new Set(
-  "html head body title style div span p section article header footer main h1 h2 h3 h4 h5 h6 strong b em i u s del small sub sup br hr blockquote pre code ul ol li dl dt dd table thead tbody tfoot tr th td caption colgroup col a img figure figcaption details summary svg g path circle ellipse line polyline polygon rect text tspan defs marker clippath math semantics annotation mrow mi mn mo ms mtext mfrac msqrt mroot msub msup msubsup munder mover munderover mtable mtr mtd".split(
+  "html head body title style div span p section article header footer main h1 h2 h3 h4 h5 h6 strong b em i u s del small sub sup br hr blockquote pre code ul ol li dl dt dd table thead tbody tfoot tr th td caption colgroup col a img figure figcaption details summary svg foreignobject g path circle ellipse line polyline polygon rect text tspan defs marker clippath math semantics annotation mrow mi mn mo ms mtext mfrac msqrt mroot msub msup msubsup munder mover munderover mtable mtr mtd".split(
     " ",
   ),
 );
 const allowedAttributes = new Set(
-  "class style colspan rowspan scope start reversed value open title alt dir lang viewbox d fill stroke stroke-width x y x1 x2 y1 y2 cx cy r rx ry points width height transform xmlns display encoding".split(
+  "class style colspan rowspan scope start reversed value open title alt dir lang viewbox d fill stroke stroke-width x y x1 x2 y1 y2 cx cy r rx ry points width height transform xmlns display encoding accent stretchy mathvariant mathsize movablelimits columnalign rowalign columnspacing rowspacing text-anchor dominant-baseline dx dy stroke-linecap stroke-linejoin preserveaspectratio".split(
     " ",
   ),
 );

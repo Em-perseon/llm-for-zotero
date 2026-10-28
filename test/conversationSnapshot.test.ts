@@ -57,14 +57,16 @@ describe("conversation snapshots", function () {
 
   it("removes executable elements, hostile metadata, and remote images at the receiver", function () {
     const html = sanitizeSnapshotHtml(
-      `<html><head><base href="https://evil.test"><meta http-equiv="refresh" content="0;url=https://evil.test"><style>.card{color:blue}</style></head><body onload="evil()"><script>evil()</script><iframe srcdoc="oops"></iframe><form><input></form><a href="javascript:evil()">bad</a><a href="https://example.com">source</a><img src="https://evil.test/a" onerror="evil()"><svg><foreignObject>unsafe</foreignObject><path d="M0 0L10 10"></path></svg></body></html>`,
+      `<html><head><base href="https://evil.test"><meta http-equiv="refresh" content="0;url=https://evil.test"><style>.card{color:blue}</style></head><body onload="evil()"><script>evil()</script><iframe srcdoc="oops"></iframe><form><input></form><a href="javascript:evil()">bad</a><a href="https://example.com">source</a><img src="https://evil.test/a" onerror="evil()"><svg><foreignObject x="10" y="20"><div onclick="evil()">前 1 个<script>evil()</script><iframe src="https://evil.test"></iframe></div></foreignObject><path d="M0 0L10 10"></path></svg></body></html>`,
     );
     assert.notMatch(
       html,
-      /evil|<script|<iframe|<form|<input|<base|onload|onerror|foreignObject/i,
+      /evil|<script|<iframe|<form|<input|<base|onload|onerror/i,
     );
     assert.include(html, '<a href="https://example.com">');
     assert.include(html, "<path");
+    assert.include(html, "<foreignObject");
+    assert.include(html, "前 1 个");
     assert.include(html, "default-src 'none'");
     assert.include(html, ".card{color:blue}");
   });
