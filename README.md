@@ -905,8 +905,9 @@ cards, tables, computed styles, SVG paths, and available images. Existing note a
 Markdown exports are unchanged; each snapshot is a new attachment.
 
 This is a static archive of messages currently loaded in the browser. Scroll through
-long conversations before saving. Scripts, account/sidebar UI, interactive widgets,
-external fonts, and original uploaded files are excluded. Missing images are reported.
+long conversations before saving. Charts and inline references become static content.
+Scripts, account/sidebar UI, external fonts, and original uploaded files are excluded.
+The paired extension aborts the save if an image cannot be embedded.
 The initial implementation supports ordinary `https://chatgpt.com/c/...` conversations,
 with a 16 MiB limit and a 60-second request timeout. The matching extension must also
 be updated; older extensions receive a clear update message. A changed conversation
